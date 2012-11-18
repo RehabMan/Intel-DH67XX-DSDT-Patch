@@ -11,11 +11,12 @@ end;
 
 # rehabman:
 # _FDC is supposed to return a Buffer, not a Package
+# commented out for now, because device FDC just gets removed later
 
-into device label FDC code_regex (Name\s*\(_FDE,\s*)Package(\s*\(0x05\)[^)]*\)) replace_matched
-begin
-%1Buffer%2
-end;
+#into device label FDC code_regex (Name\s*\(_FDE,\s*)Package(\s*\(0x05\)[^)]*\)) replace_matched
+#begin
+#%1Buffer%2
+#end;
 
 # rehabman:
 # _PLD is supposed to return a variable length Package of Buffers
