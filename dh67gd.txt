@@ -1,3 +1,5 @@
+#Maintained by: RehabMan for: the Hackintosh community
+
 # fix compilation errors in native dh67gd DSDT...
 
 
