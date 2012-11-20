@@ -1,4 +1,4 @@
-#Maintained by: RehabMan for: the Hackintosh community
+#Maintained by: RehabMan for: Intel DH67xx
 
 # fix compilation errors in native dh67gd DSDT...
 
