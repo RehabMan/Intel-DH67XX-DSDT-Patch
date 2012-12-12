@@ -49,6 +49,7 @@ Made the patch file easier to read.
 ### How to use the patch.
 
 You can use DSDT Editor from the following link:
+
 http://www.insanelymac.com/forum/index.php?showtopic=223205
 
 Download DSDT Editor, then use the patch text file contained here to patch your native DSDT.  You can extract your native DSDT using RW-Everything under Windows or using acpidump on Linux.  Also, if your computer boots with DSDT=No (or you are using the Windows version of DSDT Editor), you can extract your original DSDT with DSDT Editor itself.
@@ -56,6 +57,7 @@ Download DSDT Editor, then use the patch text file contained here to patch your 
 The two files included are all the patches needed:
 
 dh67gd.txt - Has all patches including HDEF patch for Mountain Lion.
+
 dh67gd_lion_hdef.txt - Apply this patch *after* applying dh67gd.txt.  It re-writes the HDEF for Lion compatibility.
 
 
