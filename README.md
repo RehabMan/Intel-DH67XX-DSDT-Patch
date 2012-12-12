@@ -48,9 +48,8 @@ Made the patch file easier to read.
 
 ### How to use the patch.
 
-You can use DSDT Editor or the DSDT Auto Patcher from the following links:
-
-DSDT Editor: http://www.insanelymac.com/forum/index.php?showtopic=223205
+You can use DSDT Editor from the following link:
+http://www.insanelymac.com/forum/index.php?showtopic=223205
 
 Download DSDT Editor, then use the patch text file contained here to patch your native DSDT.  You can extract your native DSDT using RW-Everything under Windows or using acpidump on Linux.  Also, if your computer boots with DSDT=No (or you are using the Windows version of DSDT Editor), you can extract your original DSDT with DSDT Editor itself.
 
