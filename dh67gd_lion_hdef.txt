@@ -1,0 +1,32 @@
+into device name_adr 0x001B0000 parent_label PCI0 remove_entry;
+into device label PCI0 insert
+begin
+Device (HDEF)\n
+{\n
+    Name (_ADR, 0x001B0000)\n
+    Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake\n
+    {\n
+        Return (Package (0x02)\n
+        {\n
+            0x0D,\n
+            0x05\n
+        })\n
+    }\n
+    Method (_DSM, 4, NotSerialized)\n
+    {\n
+        Store (Package (0x04)\n
+            {\n
+                "layout-id", \n
+                Buffer (0x04)\n
+                {\n
+                    0x7c, 0x03, 0x00, 0x00\n
+                }, \n
+                "PinConfigurations", \n
+                Buffer (Zero) {}\n
+            }, Local0)\n
+        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+        Return (Local0)\n
+    }\n
+}
+end;
+
