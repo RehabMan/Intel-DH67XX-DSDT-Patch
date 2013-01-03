@@ -1,0 +1,20 @@
+
+# rehabman:
+# Change device ID of IGPU to 0x0116 for compatibility with native HD3000 kexts
+into device name_adr 0x00020000 insert
+begin
+    Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method\n
+    {\n
+        Store (Package (0x02)\n
+        {\n
+            "device-id",\n
+            Buffer (0x04)\n
+            {\n
+                0x16, 0x01, 0x00, 0x00\n
+            }\n
+        }, Local0)\n
+        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+        Return (Local0)\n
+    }\n
+end;
+
