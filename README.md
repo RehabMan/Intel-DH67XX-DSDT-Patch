@@ -2,6 +2,8 @@
 
 These are the patches I am using for my hackintosh based on the Intel DH67GD board.
 
+Please see this tonymacx86 thread for additional information on this board series: http://www.tonymacx86.com/mountain-lion-desktop-guides/77676-success-intel-dh67gd-core-i7-2600k-hd3000-ml-10-8-2-a.html
+
 I started with the following file:
 http://olarila.com/Packs/Intel/DH67GD.txt
 
