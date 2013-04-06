@@ -1,3 +1,12 @@
+#Maintained by: RehabMan for: Intel DH67xx
+
+#
+# Use this patch to change the device-id of the IGPU HD3000 device
+# to 0x0116 for native matching against stock AppleIntelSNBGraphicsFB.kext
+#
+# You probably do not need this patch if you are not planning to use
+# the integrated HD3000 or your CPU does not have integrated graphics.
+#
 
 # rehabman:
 # Change device ID of IGPU to 0x0116 for compatibility with native HD3000 kexts
@@ -5,16 +14,17 @@ into device name_adr 0x00020000 insert
 begin
     Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method\n
     {\n
-        Store (Package (0x02)\n
+        If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+        Return (Package()\n
         {\n
             "device-id",\n
-            Buffer (0x04)\n
-            {\n
-                0x16, 0x01, 0x00, 0x00\n
-            }\n
-        }, Local0)\n
-        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-        Return (Local0)\n
+            Buffer (0x04) { 0x16, 0x01, 0x00, 0x00 }\n
+        })\n
     }\n
 end;
+
+# rehabman:
+# Rename all instances of GFX0 to IGPU
+into_all all code_regex GFX0 replaceall_matched begin IGPU end;
+into_all all label GFX0 set_label begin IGPU end;
 

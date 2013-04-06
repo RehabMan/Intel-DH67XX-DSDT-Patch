@@ -1,5 +1,11 @@
 #Maintained by: RehabMan for: Intel DH67xx
 
+#
+# This set of patches is the main set. Apply this set, plus dh67gd_igpu.txt if you
+# are using integrated HD3000 graphics.  Apply dh67gd_lion.hdef.txt after all others
+# but only if using Lion.
+#
+
 # fix compilation errors in native dh67gd DSDT...
 
 
@@ -28,6 +34,19 @@ begin
 %1Package() { Buffer%2}
 end;
 
+# rehabman
+# Not strictly necessary, but...
+
+into_all all code_regex _T_0 replaceall_matched begin T_0 end;
+into_all all code_regex _T_1 replaceall_matched begin T_1 end;
+into_all all code_regex _T_2 replaceall_matched begin T_2 end;
+into_all all code_regex _T_3 replaceall_matched begin T_3 end;
+into_all all code_regex _T_4 replaceall_matched begin T_4 end;
+
+into_all all code_regex Or\s\(0x03,\sPARM\) replaceall_matched
+begin
+Or (PARM, 0x03, PARM)
+end;
 
 # that is it for syntax, rest are functional...
 
@@ -86,54 +105,8 @@ begin
     }\n
 end;
 
-into_all all code_regex _T_0 replaceall_matched begin T_0 end;
-into_all all code_regex _T_1 replaceall_matched begin T_1 end;
-into_all all code_regex _T_2 replaceall_matched begin T_2 end;
-into_all all code_regex _T_3 replaceall_matched begin T_3 end;
-into_all all code_regex _T_4 replaceall_matched begin T_4 end;
-
-into_all all code_regex Or\s\(0x03,\sPARM\) replaceall_matched
-begin
-Or (PARM, 0x03, PARM)
-end;
-
 into_all scope label _PR code_regex Alias\s\([^\n]+\n removeall_matched;
 into_all scope label \_PR code_regex Alias\s\([^\n]+\n removeall_matched;
-
-into method label DTGP remove_entry;
-into definitionblock code_regex . insert
-begin
-Method (DTGP, 5, NotSerialized)\n
-{\n
-    If (LEqual (Arg0, Buffer (0x10)\n
-            {\n
-                /* 0000 */    0xC6, 0xB7, 0xB5, 0xA0, 0x18, 0x13, 0x1C, 0x44, \n
-                /* 0008 */    0xB0, 0xC9, 0xFE, 0x69, 0x5E, 0xAF, 0x94, 0x9B\n
-            }))\n
-    {\n
-        If (LEqual (Arg1, One))\n
-        {\n
-            If (LEqual (Arg2, Zero))\n
-            {\n
-                Store (Buffer (One)\n
-                    {\n
-                        0x03\n
-                    }, Arg4)\n
-                Return (One)\n
-            }\n
-            If (LEqual (Arg2, One))\n
-            {\n
-                Return (One)\n
-            }\n
-        }\n
-    }\n
-    Store (Buffer (One)\n
-        {\n
-            0x00\n
-        }, Arg4)\n
-    Return (Zero)\n
-}
-end;
 
 into device label PWRB code_regex (Name\s\()_HID(\,\sEisaId\s\(\"PNP0C0C\"\)\)) replace_matched begin %1_CID%2 end;
 into device name_hid PNP0000 code_regex IRQNoFlags\s\(\)\n\s+\{(\d+)\} remove_matched;
@@ -156,16 +129,12 @@ into device name_adr 0x001F0000 insert
 begin
 Method (_DSM, 4, NotSerialized)\n
 {\n
-    Store (Package (0x02)\n
-        {\n
-            "device-id", \n
-            Buffer (0x04)\n
-            {\n
-                0x49, 0x1c, 0x00, 0x00\n
-            }\n
-        }, Local0)\n
-    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-    Return (Local0)\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "device-id", \n
+        Buffer (0x04) { 0x49, 0x1c, 0x00, 0x00 }\n
+    })\n
 }
 end;
 
@@ -193,28 +162,17 @@ begin
 Device (HDEF)\n
 {\n
     Name (_ADR, 0x001B0000)\n
-    Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake\n
-    {\n
-        Return (Package (0x02)\n
-        {\n
-            0x0D,\n
-            0x05\n
-        })\n
-    }\n
+    Name (_PRW, Package() { 0x0D, 0x05 })\n
     Method (_DSM, 4, NotSerialized)\n
     {\n
-        Store (Package (0x04)\n
-            {\n
-                "layout-id", \n
-                Buffer (0x04)\n
-                {\n
-                    0x01, 0x00, 0x00, 0x00\n
-                }, \n
-                "PinConfigurations", \n
-                Buffer (Zero) {}\n
-            }, Local0)\n
-        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-        Return (Local0)\n
+        If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+        Return (Package()\n
+        {\n
+            "layout-id", \n
+            Buffer (0x04) { 0x01, 0x00, 0x00, 0x00 }, \n
+            "PinConfigurations", \n
+            Buffer (Zero) {}\n
+        })\n
     }\n
 }
 end;
@@ -232,10 +190,7 @@ end;
 into method label _STA parent_hid PNP0103 remove_entry;
 into device name_hid PNP0103 insert
 begin
-Method (_STA, 0, NotSerialized)\n
-{\n
-    Return (0x0F)\n
-}
+Name (_STA, 0x0F)\n
 end;
 
 into method label _CRS parent_hid PNP0103 remove_entry;
@@ -257,78 +212,69 @@ into method label _DSM parent_adr 0x001D0000 remove_entry;
 into device name_adr 0x001D0000 insert
 begin
 Method (_DSM, 4, NotSerialized)\n
-                {\n
-                    Store (Package ()\n
-                       {\n
-                        "AAPL,current-available",\n
-                        0x0834,\n
-                        "AAPL,current-extra",\n
-                        0x0A8C,\n
-                        "AAPL,current-extra-in-sleep",\n
-                        0x0A8C,\n
-                        "AAPL,max-port-current-in-sleep",\n
-                        0x0834,\n
-                        "AAPL,device-internal",\n
-                        0x02,\n
-                        Buffer (0x01)\n
-                        {\n
-                            0x00\n
-                        }\n
-                        }, Local0)\n
-                    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-                    Return (Local0)\n
-                }
+{\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "AAPL,current-available",\n
+        0x0834,\n
+        "AAPL,current-extra",\n
+        0x0A8C,\n
+        "AAPL,current-extra-in-sleep",\n
+        0x0A8C,\n
+        "AAPL,max-port-current-in-sleep",\n
+        0x0834,\n
+        "AAPL,device-internal",\n
+        0x02,\n
+        Buffer (0x01) { 0x00 }\n
+    })\n
+}
 end;
 
 into method label _DSM parent_adr 0x001A0000 remove_entry;
 into device name_adr 0x001A0000 insert
 begin
 Method (_DSM, 4, NotSerialized)\n
-                {\n
-                    Store (Package ()\n
-                       {\n
-                        "AAPL,current-available",\n
-                        0x0834,\n
-                        "AAPL,current-extra",\n
-                        0x0A8C,\n
-                        "AAPL,current-extra-in-sleep",\n
-                        0x0A8C,\n
-                        "AAPL,max-port-current-in-sleep",\n
-                        0x0834,\n
-                        "AAPL,device-internal",\n
-                        0x02,\n
-                        Buffer (0x01)\n
-                        {\n
-                            0x00\n
-                        }\n
-                        }, Local0)\n
-                    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-                    Return (Local0)\n
-                }
+{\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "AAPL,current-available",\n
+        0x0834,\n
+        "AAPL,current-extra",\n
+        0x0A8C,\n
+        "AAPL,current-extra-in-sleep",\n
+        0x0A8C,\n
+        "AAPL,max-port-current-in-sleep",\n
+        0x0834,\n
+        "AAPL,device-internal",\n
+        0x02,\n
+        Buffer (0x01) { 0x00 }\n
+    })\n
+}
 end;
 
 into method label _DSM parent_adr 0x001F0003 remove_entry;
 into device name_adr 0x001F0003 insert
 begin
 Device (BUS0)\n
-                {\n
-                    Name (_CID, "smbus")\n
-                    Name (_ADR, Zero)\n
-                    Device (DVL0)\n
-                    {\n
-                        Name (_ADR, 0x57)\n
-                        Name (_CID, "diagsvault")\n
-                        Method (_DSM, 4, NotSerialized)\n
-                        {\n
-                            Store (Package (0x02)\n
-                                {\n
-                                    "address", \n
-                                    0x57\n
-                                }, Local0)\n
-                            DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-                            Return (Local0)\n
-                        }\n
-                    }\n
-                }
+{\n
+    Name (_CID, "smbus")\n
+    Name (_ADR, Zero)\n
+    Device (DVL0)\n
+    {\n
+        Name (_ADR, 0x57)\n
+        Name (_CID, "diagsvault")\n
+        Method (_DSM, 4, NotSerialized)\n
+        {\n
+            If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+            Return (Package()\n
+            {\n
+                "address",\n
+                0x57\n
+            })\n
+        }\n
+    }\n
+}
 end;
 
