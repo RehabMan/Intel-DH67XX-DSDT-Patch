@@ -57,11 +57,25 @@ end;
 # something with a PS2 mouse, which of course this board doesn't even
 # have a PS2 port!!!...
 
-into method label IOKS replace_content
-begin
-   // nothing
-end;
+#into method label IOKS replace_content
+#begin
+#   // nothing
+#end;
 
+# or... since there is no PS2 port on this board, remove all related 
+# code/references and devices
+
+into device name_hid PNP0303 remove_entry;
+into device name_hid PNP0F03 remove_entry;
+into method label SIOS code_regex IOKS\s+\(Arg0\) remove_matched;
+into method label PTS code_regex \\_SB\.PCI0\.SBRG\.IOKS\s+\(Arg0\) remove_matched;
+into method label IOKH remove_entry;
+into method label SIOH remove_entry;
+into method label _L1D code_regex \\_SB\.PCI0\.SBRG\.SIOH\s+\(\) remove_matched;
+into method label _L08 code_regex \\_SB\.PCI0\.SBRG\.SIOH\s+\(\) remove_matched;
+into method label PS2M._PRW remove_entry;
+into method label PS2K._PRW remove_entry;
+into method label IOKS remove_entry;
 
 # Change method _PTS where Arg0 is 0x05 (shutdown)
 # (from Shutdown Intel.txt)
@@ -168,10 +182,12 @@ Device (HDEF)\n
         If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
         Return (Package()\n
         {\n
-            "layout-id", \n
-            Buffer (0x04) { 0x01, 0x00, 0x00, 0x00 }, \n
-            "PinConfigurations", \n
-            Buffer (Zero) {}\n
+            "hda-gfx",\n
+            Buffer() { "onboard-1" },\n
+            "layout-id",\n
+            Buffer() { 0x01, 0x00, 0x00, 0x00 },\n
+            "PinConfigurations",\n
+            Buffer() {}\n
         })\n
     }\n
 }
