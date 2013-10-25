@@ -25,9 +25,9 @@ Device (HDEF)\n
             "hda-gfx",\n
             Buffer() { "onboard-1" },\n
             "layout-id",\n
-            Buffer (0x04) { 0x7c, 0x03, 0x00, 0x00 },\n
+            Buffer() { 0x7c, 0x03, 0x00, 0x00 },\n
             "PinConfigurations",\n
-            Buffer (Zero) {}\n
+            Buffer() { }\n
         })\n
     }\n
 }

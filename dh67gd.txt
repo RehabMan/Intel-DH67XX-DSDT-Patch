@@ -28,7 +28,6 @@ end;
 
 # rehabman:
 # _PLD is supposed to return a variable length Package of Buffers
-
 into_all all code_regex (Name\s*\(_PLD,\s*)Buffer(\s\(0x10\)[^\)]*) replaceall_matched
 begin
 %1Package() { Buffer%2}
@@ -36,17 +35,13 @@ end;
 
 # rehabman
 # Not strictly necessary, but...
-
 into_all all code_regex _T_0 replaceall_matched begin T_0 end;
 into_all all code_regex _T_1 replaceall_matched begin T_1 end;
 into_all all code_regex _T_2 replaceall_matched begin T_2 end;
 into_all all code_regex _T_3 replaceall_matched begin T_3 end;
 into_all all code_regex _T_4 replaceall_matched begin T_4 end;
 
-into_all all code_regex Or\s\(0x03,\sPARM\) replaceall_matched
-begin
-Or (PARM, 0x03, PARM)
-end;
+into_all all code_regex Or\s\(0x03,\sPARM\) replaceall_matched begin Or (PARM, 0x03, PARM) end;
 
 # that is it for syntax, rest are functional...
 
@@ -129,28 +124,30 @@ into device name_hid PNP0B00 code_regex IRQNoFlags\s\(\)\n\s+\{(\d+)\} remove_ma
 into device name_hid PNP0103 code_regex_not IRQNoFlags code_regex Name\s\(([^,]+),\sResourceTemplate\s\(\)\n\s+\{((?:.|\n)*)\}\) replace_matched
 begin
 Name (%1, ResourceTemplate ()\n
-                    {\n
-                        IRQNoFlags ()\n
-                            {0}\n
-                        IRQNoFlags ()\n
-                            {8}\n
+{\n
+    IRQNoFlags () { 0, 8 }\n
 %2
 })
 end;
 
-into method label _DSM parent_adr 0x001F0000 remove_entry;
-into device name_adr 0x001F0000 insert
-begin
-Method (_DSM, 4, NotSerialized)\n
-{\n
-    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
-    Return (Package()\n
-    {\n
-        "device-id", \n
-        Buffer (0x04) { 0x49, 0x1c, 0x00, 0x00 }\n
-    })\n
-}
-end;
+# rehabman:
+# This patch is not necessary.  8086:1c49 is the native ID
+#
+#into method label _DSM parent_adr 0x001F0000 remove_entry;
+#into device name_adr 0x001F0000 insert
+#begin
+#Method (_DSM, 4, NotSerialized)\n
+#{\n
+#    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+#    Return (Package()\n
+#    {\n
+#        "name",\n
+#        "pci8086,1c49",\n
+#        "device-id",\n
+#        Buffer() { 0x49, 0x1c, 0x00, 0x00 }\n
+#    })\n
+#}
+#end;
 
 into_all all code_regex Name\s\(RPMV,\sPackage\s\(0x00\) replaceall_matched
 begin
@@ -224,6 +221,22 @@ into method label SIOS insert begin Return (Zero) end;
 into method label STM code_regex Return\s\(Zero\) remove_matched;
 into method label STM insert begin Return (Zero) end;
 
+# rehabman
+# make GBE (Ethernet) built-in (REVIEW: doesn't work... mystery)
+#into method label _DSM parent_adr 0x00190000 remove_entry;
+#into device name_adr 0x00190000 insert
+#begin
+#Method (_DSM, 4, NotSerialized)\n
+#{\n
+#    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+#    Return (Package()\n
+#    {\n
+#        "built-in", Buffer() { 0x01 },\n
+#    })\n
+#}
+#end;
+
+
 into method label _DSM parent_adr 0x001D0000 remove_entry;
 into device name_adr 0x001D0000 insert
 begin
@@ -232,17 +245,11 @@ Method (_DSM, 4, NotSerialized)\n
     If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
     Return (Package()\n
     {\n
-        "AAPL,current-available",\n
-        0x0834,\n
-        "AAPL,current-extra",\n
-        0x0A8C,\n
-        "AAPL,current-extra-in-sleep",\n
-        0x0A8C,\n
-        "AAPL,max-port-current-in-sleep",\n
-        0x0834,\n
-        "AAPL,device-internal",\n
-        0x02,\n
-        Buffer (0x01) { 0x00 }\n
+        "AAPL,current-available", 2100,\n
+        "AAPL,current-extra", 2700,\n
+        "AAPL,current-extra-in-sleep", 2700,\n
+        "AAPL,max-port-current-in-sleep", 2100,\n
+        "AAPL,device-internal", 0x02,\n
     })\n
 }
 end;
@@ -255,17 +262,11 @@ Method (_DSM, 4, NotSerialized)\n
     If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
     Return (Package()\n
     {\n
-        "AAPL,current-available",\n
-        0x0834,\n
-        "AAPL,current-extra",\n
-        0x0A8C,\n
-        "AAPL,current-extra-in-sleep",\n
-        0x0A8C,\n
-        "AAPL,max-port-current-in-sleep",\n
-        0x0834,\n
-        "AAPL,device-internal",\n
-        0x02,\n
-        Buffer (0x01) { 0x00 }\n
+        "AAPL,current-available", 2100,\n
+        "AAPL,current-extra", 2700,\n
+        "AAPL,current-extra-in-sleep", 2700,\n
+        "AAPL,max-port-current-in-sleep", 2100,\n
+        "AAPL,device-internal", 0x02,\n
     })\n
 }
 end;

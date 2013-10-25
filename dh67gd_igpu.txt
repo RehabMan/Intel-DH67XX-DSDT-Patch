@@ -12,7 +12,7 @@
 # Change device ID of IGPU to 0x0116 for compatibility with native HD3000 kexts
 into device name_adr 0x00020000 insert
 begin
-Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method\n
+Method (_DSM, 4, NotSerialized)
 {\n
     If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
     Return (Package()\n
