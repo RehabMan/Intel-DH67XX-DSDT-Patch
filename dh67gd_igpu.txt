@@ -18,8 +18,10 @@ Method (_DSM, 4, NotSerialized)
     Return (Package()\n
     {\n
         "device-id", Buffer() { 0x16, 0x01, 0x00, 0x00 },\n
-        "AAPL,snb-platform-id", Buffer() { 0x00, 0x00, 0x01, 0x00 },\n
-        "hda-gfx", Buffer() { "onboard-1" },\n
+        //REVIEW: for this board, better without...
+        //"hda-gfx", Buffer() { "onboard-1" },\n
+        //desktop: "AAPL,snb-platform-id", Buffer() { 0x00, 0x10, 0x30, 0x00 },\n
+        //laptop:  "AAPL,snb-platform-id", Buffer() { 0x00, 0x00, 0x01, 0x00 },\n
     })\n
 }\n
 end;
