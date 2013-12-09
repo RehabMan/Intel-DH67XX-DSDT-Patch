@@ -22,10 +22,11 @@ Device (HDEF)\n
         If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
         Return (Package()\n
         {\n
-            "hda-gfx", Buffer() { "onboard-1" },\n
             "layout-id", Buffer() { 0x7c, 0x03, 0x00, 0x00 },\n
             "PinConfigurations", Buffer() { },\n
             "MaximumBootBeepVolume", 77,
+            //REVIEW: for this board, better without...
+            //"hda-gfx", Buffer() { "onboard-1" },\n
         })\n
     }\n
 }
