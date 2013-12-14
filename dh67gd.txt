@@ -188,7 +188,7 @@ Device (HDEF)\n
         {\n
             "layout-id", Buffer() { 0x01, 0x00, 0x00, 0x00 },\n
             "PinConfigurations", Buffer() {},\n
-            "MaximumBootBeepVolume", 77,
+            //"MaximumBootBeepVolume", 77,\n
             //REVIEW: for this board, better without...
             //"hda-gfx", Buffer() { "onboard-1" },\n
         })\n
