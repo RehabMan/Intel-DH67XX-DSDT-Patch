@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HDAConfigDefault</key>
+	<array>
+		<dict>
+			<key>CodecID</key>
+			<integer>283904146</integer>
+			<key>ConfigData</key>
+			<data>IUccECFHHUAhRx4RIUcfASFXHCAhVx0QIVceASFXHwEhZxwwIWcdYCFnHgEhZx8BIXcc8CF3HQAhdx4AIXcfQCGHHEAhhx2QIYceoSGHH5AhlxxQIZcdkCGXHoEhlx8CIaccYCGnHTAhpx6BIacfASG3HHAhtx1AIbceISG3HwIh5xyQIecdYSHnHksh5x8BIfcc8CH3HQAh9x4AIfcfQCEXHPAhFx0AIRceACEXH0A=</data>
+			<key>FuncGroup</key>
+			<integer>1</integer>
+			<key>LayoutID</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>CodecID</key>
+			<integer>283904146</integer>
+			<key>ConfigData</key>
+			<data>IUccECFHHUAhRx4RIUcfASFXHPAhVx0AIVceACFXH0AhZxzwIWcdACFnHgAhZx9AIXcc8CF3HQAhdx4AIXcfQCGHHEAhhx2QIYceASGHH5AhlxxgIZcdkCGXHoEhlx8CIaccUCGnHTAhpx4BIacfASG3HHAhtx1AIbceISG3HwIh5xyQIecdYSHnHksh5x8BIfcc8CH3HQAh9x4AIfcfQCEXHPAhFx0AIRceACEXH0A=</data>
+			<key>FuncGroup</key>
+			<integer>1</integer>
+			<key>LayoutID</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>CodecID</key>
+			<integer>283904146</integer>
+			<key>ConfigData</key>
+			<data>IUccECFHHUAhRx4RIUcfASFXHCAhVx0QIVceASFXHwEhZxzwIWcdACFnHgAhZx9AIXcc8CF3HQAhdx4AIXcfQCGHHEAhhx2QIYceoSGHH5AhlxxQIZcdkCGXHoEhlx8CIaccYCGnHTAhpx6BIacfASG3HHAhtx1AIbceISG3HwIh5xyQIecdYSHnHksh5x8BIfcc8CH3HQAh9x4AIfcfQCEXHPAhFx0AIRceACEXH0A=</data>
+			<key>FuncGroup</key>
+			<integer>1</integer>
+			<key>LayoutID</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

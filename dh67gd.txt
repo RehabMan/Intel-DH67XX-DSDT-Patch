@@ -186,11 +186,10 @@ Device (HDEF)\n
         If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
         Return (Package()\n
         {\n
-            "layout-id", Buffer() { 0x01, 0x00, 0x00, 0x00 },\n
+            "layout-id", Buffer() { 0x03, 0x00, 0x00, 0x00 },\n
             "PinConfigurations", Buffer() {},\n
+            "hda-gfx", Buffer() { "onboard-1" },\n
             //"MaximumBootBeepVolume", 77,\n
-            //REVIEW: for this board, better without...
-            //"hda-gfx", Buffer() { "onboard-1" },\n
         })\n
     }\n
 }
@@ -312,3 +311,21 @@ Device (IMEI)\n
     Name (_ADR, 0x00160000)\n
 }\n
 end;
+
+# New fixes for Ethernet
+# credit: Mieze
+
+# added to fix issues with IntelMausiEthernet.kext
+# large transfers may cause the link to go down without this patch
+# it is not possible to understand why...
+
+into method label SWAK code_regex If\s\(.*GBES\) replace_matched begin If(0) end;
+into scope label GBE code_regex OperationRegion[\s\S]*\} remove_matched;
+into method label _L0D replace_content
+begin
+    Notify (\_SB.PCI0.GBE, 0x02)\n
+    Notify (\_SB.PCI0.USBE, 0x02)\n
+    Notify (\_SB.PCI0.EUSB, 0x02)\n
+    Notify (\_SB.PWRB, 0x02)\n
+end;
+

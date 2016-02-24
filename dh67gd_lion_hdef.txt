@@ -9,6 +9,7 @@
 # a different layout-id.
 #
 
+# Note: This is only for Multibeast, not used anymore in this project.
 
 into device name_adr 0x001B0000 parent_label PCI0 remove_entry;
 into device label PCI0 insert
@@ -24,9 +25,8 @@ Device (HDEF)\n
         {\n
             "layout-id", Buffer() { 0x7c, 0x03, 0x00, 0x00 },\n
             "PinConfigurations", Buffer() { },\n
+            "hda-gfx", Buffer() { "onboard-1" },\n
             //"MaximumBootBeepVolume", 77,\n
-            //REVIEW: for this board, better without...
-            //"hda-gfx", Buffer() { "onboard-1" },\n
         })\n
     }\n
 }
