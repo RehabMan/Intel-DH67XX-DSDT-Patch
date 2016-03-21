@@ -152,9 +152,9 @@
 					</dict>
 					<dict>
 						<key>Key</key>
-						<string>AAPL,DualLink</string>
+						<string>AAPL00,DualLink</string>
 						<key>Value</key>
-						<data>AQ==</data>
+						<data>AQAAAA==</data>
 					</dict>
 				</array>
 			</dict>
