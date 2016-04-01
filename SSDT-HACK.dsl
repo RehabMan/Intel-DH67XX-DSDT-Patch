@@ -41,7 +41,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
         // IOKS does things with a non-existant PS2 port that causes issues with sleep.
         // IOKS is renamed to XOKS in DSDT, so calls to it will land here
         // this version of IOKS does nothing, which avoids the sleep problem.
-        External(_SB.PCI0.SBRG, DeviceObj)
+        External(\_SB.PCI0.SBRG, DeviceObj)
         Method(SBRG.IOKS, 1) { }
 
         // no HDEF in this DSDT, so add one
