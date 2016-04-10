@@ -74,6 +74,8 @@
 				<dict>
 					<key>Comment</key>
 					<string>change Method(IOKS,0,NotSerialized) to Method(XOKS,..)</string>
+					<key>Disabled</key>
+					<true/>
 					<key>Find</key>
 					<data>SU9LUwE=</data>
 					<key>Replace</key>
