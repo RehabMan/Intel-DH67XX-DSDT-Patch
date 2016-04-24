@@ -1,3 +1,3 @@
-Intel DH67XX	dh67gd.txt
-Intel DH67XX (IGPU patch)	dh67gd_igpu.txt
-Intel DH67XX (Lion Audio)	dh67gd_lion_hdef.txt
+Intel DH67XX	patches/dh67gd.txt
+Intel DH67XX (IGPU patch)	patches/dh67gd_igpu.txt
+Intel DH67XX (Lion Audio)	patches/dh67gd_lion_hdef.txt

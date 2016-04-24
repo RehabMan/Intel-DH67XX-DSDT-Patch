@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		84777BD1170D46FD00FDFE92 /* dh67gd_igpu.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dh67gd_igpu.txt; sourceTree = "<group>"; };
-		84777BD2170D46FD00FDFE92 /* dh67gd_lion_hdef.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dh67gd_lion_hdef.txt; sourceTree = "<group>"; };
-		84777BD3170D46FD00FDFE92 /* dh67gd.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dh67gd.txt; sourceTree = "<group>"; };
+		84777BD1170D46FD00FDFE92 /* dh67gd_igpu.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = dh67gd_igpu.txt; path = patches/dh67gd_igpu.txt; sourceTree = "<group>"; };
+		84777BD2170D46FD00FDFE92 /* dh67gd_lion_hdef.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = dh67gd_lion_hdef.txt; path = patches/dh67gd_lion_hdef.txt; sourceTree = "<group>"; };
+		84777BD3170D46FD00FDFE92 /* dh67gd.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = dh67gd.txt; path = patches/dh67gd.txt; sourceTree = "<group>"; };
 		84777BD4170D46FD00FDFE92 /* License.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = License.md; sourceTree = "<group>"; };
 		84777BD5170D46FD00FDFE92 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		84777BD6170D4B8500FDFE92 /* .maciasl */ = {isa = PBXFileReference; lastKnownFileType = text; path = .maciasl; sourceTree = "<group>"; };
@@ -35,20 +35,20 @@
 			children = (
 				84777BD5170D46FD00FDFE92 /* README.md */,
 				84777BD4170D46FD00FDFE92 /* License.md */,
+				ED498D841BD3027200C7BB36 /* config.plist */,
 				ED95D2AE1C443EC700F66D6C /* download.sh */,
 				EDA850231CCC68A300E3BF50 /* install_tools.sh */,
 				ED95D2AF1C443EC700F66D6C /* install_downloads.sh */,
 				ED6AA33D1C17E4E300143A36 /* makefile */,
 				ED6AA33F1C17E52200143A36 /* print_version.sh */,
 				ED6AA33E1C17E4FB00143A36 /* mount_efi.sh */,
-				ED498D841BD3027200C7BB36 /* config.plist */,
 				ED498D831BD3027200C7BB36 /* SSDT-HACK.dsl */,
 				ED6AA3471C17E58B00143A36 /* audio */,
-				ED6AA3401C17E53200143A36 /* static */,
+				ED6AA3401C17E53200143A36 /* static patches */,
 			);
 			sourceTree = "<group>";
 		};
-		ED6AA3401C17E53200143A36 /* static */ = {
+		ED6AA3401C17E53200143A36 /* static patches */ = {
 			isa = PBXGroup;
 			children = (
 				84777BD6170D4B8500FDFE92 /* .maciasl */,
@@ -56,7 +56,7 @@
 				84777BD1170D46FD00FDFE92 /* dh67gd_igpu.txt */,
 				84777BD2170D46FD00FDFE92 /* dh67gd_lion_hdef.txt */,
 			);
-			name = static;
+			name = "static patches";
 			sourceTree = "<group>";
 		};
 		ED6AA3471C17E58B00143A36 /* audio */ = {
