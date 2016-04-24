@@ -2,6 +2,17 @@
 
 These are the patches I am using for my hackintosh based on the Intel DH67GD board.
 
+The current version of the patches use Clover hotpatch and an add-on SSDT, SSDT-HACK.  As as result, there is no need for any patched ACPI files in ACPI/patched.  The new hotpatch mechanism accomplishes all that the original set of MaciASL-based patches did.  It is actually a fair bit simpler to do it the hotpatch way.
+
+Please refer to this guide for usage of the Clover and hotpatch method:
+
+http://www.tonymacx86.com/el-capitan-desktop-guides/190228-guide-intel-dh67xx-hd3000-using-clover-uefi-hotpatch.html
+
+
+### Original version of this project
+
+The original guide for Mountain Lion used MaciASL to provide statically patched ACPI files.  The 
+
 Please see this tonymacx86 thread for additional information on this board series: http://www.tonymacx86.com/mountain-lion-desktop-guides/77676-success-intel-dh67gd-core-i7-2600k-hd3000-ml-10-8-2-a.html
 
 I started with the following file:
@@ -58,8 +69,13 @@ Download DSDT Editor, then use the patch text file contained here to patch your 
 
 The two files included are all the patches needed:
 
-dh67gd.txt - Has all patches including HDEF patch for Mountain Lion.
+patches/dh67gd.txt - Has all patches including HDEF patch for Mountain Lion.
 
-dh67gd_lion_hdef.txt - Apply this patch *after* applying dh67gd.txt.  It re-writes the HDEF for Lion compatibility.
+patches/dh67gd_igpu.txt - Patches for the case of using Intel HD3000 onboard graphics
 
+patches/dh67gd_lion_hdef.txt - Apply this patch *after* applying dh67gd.txt.  It re-writes the HDEF for Lion compatibility.
+
+Or you can use MaciASL and add this patch repo as a source:
+
+https://github.com/RehabMan/Intel-DH67XX-DSDT-Patch/raw/master
 
