@@ -27,7 +27,7 @@ IASL=iasl
 
 # build SSDT-HACK.aml, not patched set
 .PHONY: all
-all: $(BUILDDIR)/SSDT-HACK.aml $(HDAHCDINJECT) # $(HDAINJECT)
+all: $(BUILDDIR)/SSDT-HACK.aml $(HDAHCDINJECT) $(HDAINJECT)
 
 $(BUILDDIR)/SSDT-HACK.aml: ./SSDT-HACK.dsl
 	$(IASL) $(IASLFLAGS) -p $@ $<
@@ -43,10 +43,8 @@ install: $(BUILDDIR)/SSDT-HACK.aml
 	$(eval EFIDIR:=$(shell sudo ./mount_efi.sh /))
 	cp $(BUILDDIR)/SSDT-HACK.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched/SSDT-HACK.aml
 
-#$(HDAINJECT): $(RESOURCES)/*.plist ./patch_hda.sh
-$(HDAHCDINJECT): $(RESOURCES)/*.plist ./patch_hda.sh
+$(HDAINJECT) $(HDAHCDINJECT): $(RESOURCES)/*.plist ./patch_hda.sh
 	./patch_hda.sh $(HDA)
-	touch $@
 
 .PHONY: clean_hda
 clean_hda:
@@ -60,7 +58,8 @@ update_kernelcache:
 	sudo touch $(SLE)
 	sudo kextcache -update-volume /
 
-.PHONY: install_dummy
+# install_dummy must be used on <= 10.7.5
+.PHONY: install_hdadummy
 install_hdadummy:
 	sudo rm -Rf $(INSTDIR)/$(HDAINJECT)
 	sudo rm -Rf $(INSTDIR)/$(HDAHCDINJECT)
@@ -68,6 +67,7 @@ install_hdadummy:
 	if [ "`which tag`" != "" ]; then sudo tag -a Blue $(INSTDIR)/$(HDAINJECT); fi
 	make update_kernelcache
 
+# install_hda can be used only on >= 10.8
 .PHONY: install_hda
 install_hda:
 	sudo rm -Rf $(INSTDIR)/$(HDAINJECT)
