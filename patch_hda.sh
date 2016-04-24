@@ -88,7 +88,11 @@ function createAppleHDAResources_HDC()
     for layout in $layouts; do
         cp Resources_$1/$layout AppleHDA_$1_Resources/${layout/.plist/.zml}
     done
-    ./tools/zlib inflate $unpatched/AppleHDA.kext/Contents/Resources/Platforms.xml.zlib >/tmp/rm_Platforms.plist
+    if [[ $MINOR_VER -gt 7 ]]; then
+        ./tools/zlib inflate $unpatched/AppleHDA.kext/Contents/Resources/Platforms.xml.zlib >/tmp/rm_Platforms.plist
+    else
+        cp $unpatched/AppleHDA.kext/Contents/Resources/Platforms.xml /tmp/rm_Platforms.plist
+    fi
     /usr/libexec/plistbuddy -c "Delete ':PathMaps'" /tmp/rm_Platforms.plist
     /usr/libexec/plistbuddy -c "Merge Resources_$1/Platforms.plist" /tmp/rm_Platforms.plist
     cp /tmp/rm_Platforms.plist AppleHDA_$1_Resources/Platforms.zml
