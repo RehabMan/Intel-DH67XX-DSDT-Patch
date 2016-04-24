@@ -370,6 +370,18 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>AppleHDA .xml to .zml</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>LnhtbA==</data>
+				<key>Name</key>
+				<string>AppleHDA</string>
+				<key>Replace</key>
+				<data>LnptbA==</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>ALC892 AppleHDA (#1 of 3)</string>
 				<key>Find</key>
 				<data>PYQZ1BE=</data>

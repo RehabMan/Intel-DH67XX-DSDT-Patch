@@ -6,3 +6,6 @@ Patches.xcodeproj/project.xcworkspace/xcshareddata/Patches.xccheckout
 build/*
 !build/readme.txt
 downloads
+AppleHDA_ALC892.kext
+AppleHDAHCD_ALC892.kext
+AppleHDA_ALC892_Resources
