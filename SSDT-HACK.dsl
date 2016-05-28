@@ -51,5 +51,88 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
             Name(_PRW, Package() { 0x0d, 0x05 })
         }
     }
+
+//
+// CodecCommander PinConfigDefault configuration
+//
+    Name(_SB.PCI0.HDEF.RMCF, Package()
+    {
+        "CodecCommander", Package()
+        {
+            "Disable", ">y",
+        },
+        "CodecCommanderPowerHook", Package()
+        {
+            "Disable", ">y",
+        },
+        "CodecCommanderProbeInit", Package()
+        {
+            "Version", 0x020600,
+            "10ec_0892_HDA_8086", Package()
+            {
+                "PinConfigDefault", Package()
+                {
+                    Package(){},
+                    Package()
+                    {
+                        "LayoutID", 1,
+                        "PinConfigs", Package()
+                        {
+                            Package(){},
+                            0x11, 0x400000f0,
+                            0x14, 0x01114010,
+                            0x15, 0x01011020,
+                            0x16, 0x01016030,
+                            0x17, 0x400000f0,
+                            0x18, 0x90a19040,
+                            0x19, 0x02819050,
+                            0x1a, 0x01813060,
+                            0x1b, 0x02214070,
+                            0x1e, 0x014b6190,
+                            0x1f, 0x400000f0,
+                        },
+                    },
+                    Package()
+                    {
+                        "LayoutID", 2,
+                        "PinConfigs", Package()
+                        {
+                            Package(){},
+                            0x11, 0x400000f0,
+                            0x14, 0x01114010,
+                            0x15, 0x400000f0,
+                            0x16, 0x400000f0,
+                            0x17, 0x400000f0,
+                            0x18, 0x90019040,
+                            0x19, 0x02819060,
+                            0x1a, 0x01013050,
+                            0x1b, 0x02214070,
+                            0x1e, 0x014b6190,
+                            0x1f, 0x400000f0,
+                        },
+                    },
+                    Package()
+                    {
+                        "LayoutID", 3,
+                        "PinConfigs", Package()
+                        {
+                            Package(){},
+                            0x11, 0x400000f0,
+                            0x14, 0x01114010,
+                            0x15, 0x01011020,
+                            0x16, 0x400000f0,
+                            0x17, 0x400000f0,
+                            0x18, 0x90a19040,
+                            0x19, 0x02819050,
+                            0x1a, 0x01813060,
+                            0x1b, 0x02214070,
+                            0x1e, 0x014b6190,
+                            0x1f, 0x400000f0,
+                        },
+                    },
+                },
+            },
+        },
+    })
 }
 //EOF

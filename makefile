@@ -63,6 +63,7 @@ update_kernelcache:
 install_hdadummy:
 	sudo rm -Rf $(INSTDIR)/$(HDAINJECT)
 	sudo rm -Rf $(INSTDIR)/$(HDAHCDINJECT)
+	sudo rm -f $(SLE)/AppleHDA.kext/Contents/Resources/*.zml*
 	sudo cp -R ./$(HDAINJECT) $(INSTDIR)
 	if [ "`which tag`" != "" ]; then sudo tag -a Blue $(INSTDIR)/$(HDAINJECT); fi
 	make update_kernelcache
@@ -72,8 +73,8 @@ install_hdadummy:
 install_hda:
 	sudo rm -Rf $(INSTDIR)/$(HDAINJECT)
 	sudo rm -Rf $(INSTDIR)/$(HDAHCDINJECT)
-	sudo cp -R ./$(HDAHCDINJECT) $(INSTDIR)
-	if [ "`which tag`" != "" ]; then sudo tag -a Blue $(INSTDIR)/$(HDAHCDINJECT); fi
+	#sudo cp -R ./$(HDAHCDINJECT) $(INSTDIR)
+	#if [ "`which tag`" != "" ]; then sudo tag -a Blue $(INSTDIR)/$(HDAHCDINJECT); fi
 	sudo cp $(HDAZML)/*.zml* $(SLE)/AppleHDA.kext/Contents/Resources
 	if [ "`which tag`" != "" ]; then sudo tag -a Blue $(SLE)/AppleHDA.kext/Contents/Resources/*.zml*; fi
 	make update_kernelcache
