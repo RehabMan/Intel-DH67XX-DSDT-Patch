@@ -161,6 +161,7 @@ HDA=ALC892
 $SUDO rm -Rf $KEXTDEST/AppleHDA_$HDA.kext
 $SUDO rm -Rf $KEXTDEST/AppleHDAHCD_$HDA.kext
 $SUDO rm -f $SLE/AppleHDA.kext/Contents/Resources/*.zml*
+./patch_hda.sh "$HDA"
 if [[ $MINOR_VER -le 9 ]]; then
     # dummyHDA configuration, used on 10.9 or earlier)
     make AppleHDA_$HDA.kext
