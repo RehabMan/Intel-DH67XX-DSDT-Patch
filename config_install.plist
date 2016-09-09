@@ -357,7 +357,7 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>ProductName</key>
-		<string>Macmini5,3</string>
+		<string>Macmini5,1</string>
 		<key>Trust</key>
 		<true/>
 	</dict>

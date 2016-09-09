@@ -384,7 +384,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>ALC892 AppleHDA (#1 of 3)</string>
+				<string>ALC892 AppleHDA (#1 of 4)</string>
 				<key>Find</key>
 				<data>PYQZ1BE=</data>
 				<key>Name</key>
@@ -394,7 +394,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>ALC892 AppleHDA (#2 of 3)</string>
+				<string>ALC892 AppleHDA (#2 of 4)</string>
 				<key>Find</key>
 				<data>PYsZ1BE=</data>
 				<key>Name</key>
@@ -404,9 +404,19 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>ALC892 AppleHDA (#3 of 3, new in 10.11, credit lisai9093)</string>
+				<string>ALC892 AppleHDA (#3 of 4, new in 10.11, credit lisai9093)</string>
 				<key>Find</key>
 				<data>PYMZ1BE=</data>
+				<key>Name</key>
+				<string>AppleHDA</string>
+				<key>Replace</key>
+				<data>PQAAAAA=</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>ALC892 AppleHDA (#4 of 4, new in 10.12, credit RehabMan)</string>
+				<key>Find</key>
+				<data>PYoZ1BE=</data>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
@@ -424,7 +434,7 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>ProductName</key>
-		<string>Macmini5,3</string>
+		<string>Macmini5,1</string>
 		<key>Trust</key>
 		<true/>
 	</dict>
