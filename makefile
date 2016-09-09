@@ -21,15 +21,17 @@ else
 endif
 SLE=/System/Library/Extensions
 
-
 IASLFLAGS=-ve
 IASL=iasl
 
 # build SSDT-HACK.aml, not patched set
 .PHONY: all
-all: $(BUILDDIR)/SSDT-HACK.aml $(HDAHCDINJECT) $(HDAINJECT)
+all: $(BUILDDIR)/SSDT-HACK.aml $(BUILDDIR)/SSDT-NVMe.aml $(HDAHCDINJECT) $(HDAINJECT)
 
 $(BUILDDIR)/SSDT-HACK.aml: ./SSDT-HACK.dsl
+	$(IASL) $(IASLFLAGS) -p $@ $<
+
+$(BUILDDIR)/SSDT-NVMe.aml: ./SSDT-NVMe.dsl
 	$(IASL) $(IASLFLAGS) -p $@ $<
 
 .PHONY: clean
@@ -41,7 +43,13 @@ clean:
 .PHONY: install
 install: $(BUILDDIR)/SSDT-HACK.aml
 	$(eval EFIDIR:=$(shell sudo ./mount_efi.sh /))
-	cp $(BUILDDIR)/SSDT-HACK.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched/SSDT-HACK.aml
+	cp $(BUILDDIR)/SSDT-HACK.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched
+
+.PHONY: install_nvme
+install_nvme: $(BUILDDIR)/SSDT-HACK.aml
+	$(eval EFIDIR:=$(shell sudo ./mount_efi.sh /))
+	cp $(BUILDDIR)/SSDT-HACK.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched
+	cp $(BUILDDIR)/SSDT-NVMe.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched
 
 $(HDAINJECT) $(HDAHCDINJECT): $(RESOURCES)/*.plist ./patch_hda.sh
 	./patch_hda.sh $(HDA)

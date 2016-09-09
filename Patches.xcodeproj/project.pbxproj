@@ -13,6 +13,7 @@
 		84777BD4170D46FD00FDFE92 /* License.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = License.md; sourceTree = "<group>"; };
 		84777BD5170D46FD00FDFE92 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		84777BD6170D4B8500FDFE92 /* .maciasl */ = {isa = PBXFileReference; lastKnownFileType = text; path = .maciasl; sourceTree = "<group>"; };
+		ED1A372F1D282677008DCEF1 /* SSDT-NVMe.dsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SSDT-NVMe.dsl"; sourceTree = "<group>"; };
 		ED498D831BD3027200C7BB36 /* SSDT-HACK.dsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SSDT-HACK.dsl"; sourceTree = "<group>"; };
 		ED498D841BD3027200C7BB36 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		ED6AA33D1C17E4E300143A36 /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -43,6 +44,7 @@
 				ED6AA33F1C17E52200143A36 /* print_version.sh */,
 				ED6AA33E1C17E4FB00143A36 /* mount_efi.sh */,
 				ED498D831BD3027200C7BB36 /* SSDT-HACK.dsl */,
+				ED1A372F1D282677008DCEF1 /* SSDT-NVMe.dsl */,
 				ED6AA3471C17E58B00143A36 /* audio */,
 				ED6AA3401C17E53200143A36 /* static patches */,
 			);
