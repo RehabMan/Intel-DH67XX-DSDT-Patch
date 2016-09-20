@@ -23,7 +23,7 @@ function createAppleHDAInjector()
     rm -R AppleHDA_$1.kext/Contents/MacOS/AppleHDA
     rm AppleHDA_$1.kext/Contents/version.plist
     ln -s /System/Library/Extensions/AppleHDA.kext/Contents/MacOS/AppleHDA AppleHDA_$1.kext/Contents/MacOS/AppleHDA
-    layouts=$(basename `ls Resources_$1/layout*.plist`)
+    layouts=$(basename -a `ls Resources_$1/layout*.plist`)
     for layout in $layouts; do
         cp Resources_$1/$layout AppleHDA_$1.kext/Contents/Resources/${layout/.plist/.xml}
     done
@@ -85,7 +85,7 @@ fi
 function createAppleHDAResources_HDC()
 {
     rm -rf AppleHDA_$1_Resources && mkdir AppleHDA_$1_Resources
-    layouts=$(basename `ls Resources_$1/layout*.plist`)
+    layouts=$(basename -a `ls Resources_$1/layout*.plist`)
     for layout in $layouts; do
         cp Resources_$1/$layout AppleHDA_$1_Resources/${layout/.plist/.zml}
     done
@@ -112,7 +112,7 @@ function createAppleHDAInjector_HCD()
     echo -n "Creating AppleHDAHCD_$1.kext..."
     rm -Rf AppleHDAHCD_$1.kext
     mkdir -p AppleHDAHCD_$1.kext/Contents
-    cp $unpatched/AppleHDA.kext/Contents/Plugins/AppleHDAHardwareConfigDriver.kext/Contents/Info.plist AppleHDAHCD_$1.kext/Contents/Info.plist
+    cp $unpatched/AppleHDA.kext/Contents/PlugIns/AppleHDAHardwareConfigDriver.kext/Contents/Info.plist AppleHDAHCD_$1.kext/Contents/Info.plist
 
     # fix versions (must be larger than native)
     plist=AppleHDAHCD_$1.kext/Contents/Info.plist
@@ -191,7 +191,7 @@ function createPatchedAppleHDA()
         fi
     done
 
-    layouts=$(basename `ls Resources_$1/layout*.plist`)
+    layouts=$(basename -a `ls Resources_$1/layout*.plist`)
     for layout in $layouts; do
         cp Resources_$1/$layout AppleHDA.kext/Contents/Resources/${layout/.plist/.xml}
     done
@@ -226,7 +226,7 @@ function createPatchedAppleHDA()
     /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString '$replace'" $plist
 if [[ 0 -eq 0 ]]; then
     # create AppleHDAHardwareConfigDriver overrides
-    plist=AppleHDA.kext/Contents/Plugins/AppleHDAHardwareConfigDriver.kext/Contents/Info.plist
+    plist=AppleHDA.kext/Contents/PlugIns/AppleHDAHardwareConfigDriver.kext/Contents/Info.plist
     /usr/libexec/PlistBuddy -c "Add ':HardwareConfigDriver_Temp' dict" $plist
     /usr/libexec/PlistBuddy -c "Merge $unpatched/AppleHDA.kext/Contents/PlugIns/AppleHDAHardwareConfigDriver.kext/Contents/Info.plist ':HardwareConfigDriver_Temp'" $plist
     /usr/libexec/PlistBuddy -c "Delete '::IOKitPersonalities:HDA Hardware Config Resource'" $plist
