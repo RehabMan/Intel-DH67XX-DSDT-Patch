@@ -315,10 +315,10 @@
 				<string>Disable Intel USB3 controller check</string>
 				<key>MatchOS</key>
 				<string>10.10.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleUSBXHCI</string>
 				<key>Find</key>
 				<data>9oDUAAAAgHU0</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
 				<key>Replace</key>
 				<data>9oDUAAAAgOs0</data>
 			</dict>
@@ -327,10 +327,10 @@
 				<string>Disable XHCI 1.0 check</string>
 				<key>MatchOS</key>
 				<string>10.10.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleUSBXHCI</string>
 				<key>Find</key>
 				<data>QbzHAgDgPQABAAA=</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
 				<key>Replace</key>
 				<data>QbzHAgDgPQAAAAA=</data>
 			</dict>
@@ -339,10 +339,10 @@
 				<string>Patch MSI or pin interrupts #1</string>
 				<key>MatchOS</key>
 				<string>10.10.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleUSBXHCI</string>
 				<key>Find</key>
 				<data>gUkIAABAAA==</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
 				<key>Replace</key>
 				<data>gUkIAAAAAA==</data>
 			</dict>
@@ -351,10 +351,10 @@
 				<string>Patch MSI or pin interrupts #2</string>
 				<key>MatchOS</key>
 				<string>10.10.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleUSBXHCI</string>
 				<key>Find</key>
 				<data>QcdHCAAAQAA=</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
 				<key>Replace</key>
 				<data>QcdHCAAAAAA=</data>
 			</dict>
@@ -363,10 +363,10 @@
 				<string>Enable PCI power management</string>
 				<key>MatchOS</key>
 				<string>10.10.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleUSBXHCI</string>
 				<key>Find</key>
 				<data>dU1Ii7voAQAA</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
 				<key>Replace</key>
 				<data>601Ii7voAQAA</data>
 			</dict>
@@ -375,10 +375,10 @@
 				<string>Enable TRIM for SSD</string>
 				<key>Disabled</key>
 				<false/>
+				<key>Name</key>
+				<string>com.apple.iokit.IOAHCIBlockStorage</string>
 				<key>Find</key>
 				<data>AEFQUExFIFNTRAA=</data>
-				<key>Name</key>
-				<string>IOAHCIBlockStorage</string>
 				<key>Replace</key>
 				<data>AAAAAAAAAAAAAAA=</data>
 			</dict>
@@ -387,10 +387,10 @@
 				<string>AppleHDA .xml.zl to .zml.zl</string>
 				<key>MatchOS</key>
 				<string>10.10.x,10.11.x,10.12.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleHDA</string>
 				<key>Find</key>
 				<data>LnhtbC56bA==</data>
-				<key>Name</key>
-				<string>AppleHDA</string>
 				<key>Replace</key>
 				<data>LnptbC56bA==</data>
 			</dict>
@@ -399,20 +399,20 @@
 				<string>ALC892 AppleHDA (#1 of 4)</string>
 				<key>MatchOS</key>
 				<string>10.7.x,10.8.x,10.10.x,10.11.x,10.12.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleHDA</string>
 				<key>Find</key>
 				<data>PYQZ1BE=</data>
-				<key>Name</key>
-				<string>AppleHDA</string>
 				<key>Replace</key>
 				<data>PQAAAAA=</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>ALC892 AppleHDA (#2 of 4)</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleHDA</string>
 				<key>Find</key>
 				<data>PYsZ1BE=</data>
-				<key>Name</key>
-				<string>AppleHDA</string>
 				<key>Replace</key>
 				<data>PZII7BA=</data>
 			</dict>
@@ -421,10 +421,10 @@
 				<string>ALC892 AppleHDA (#3 of 4, new in 10.11, credit lisai9093)</string>
 				<key>MatchOS</key>
 				<string>10.11.x,10.7.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleHDA</string>
 				<key>Find</key>
 				<data>PYMZ1BE=</data>
-				<key>Name</key>
-				<string>AppleHDA</string>
 				<key>Replace</key>
 				<data>PQAAAAA=</data>
 			</dict>
@@ -433,10 +433,10 @@
 				<string>ALC892 AppleHDA (#4 of 4, new in 10.12, credit RehabMan)</string>
 				<key>MatchOS</key>
 				<string>10.12.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleHDA</string>
 				<key>Find</key>
 				<data>PYoZ1BE=</data>
-				<key>Name</key>
-				<string>AppleHDA</string>
 				<key>Replace</key>
 				<data>PQAAAAA=</data>
 			</dict>
