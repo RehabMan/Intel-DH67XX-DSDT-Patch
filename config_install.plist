@@ -275,7 +275,7 @@
 			<true/>
 		</dict>
 		<key>Theme</key>
-		<string>bluemac</string>
+		<string>BGM</string>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
