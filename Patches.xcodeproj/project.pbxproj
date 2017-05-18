@@ -25,6 +25,7 @@
 		ED6AA3441C17E58400143A36 /* layout2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = layout2.plist; path = Resources_ALC892/layout2.plist; sourceTree = "<group>"; };
 		ED6AA3451C17E58400143A36 /* layout3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = layout3.plist; path = Resources_ALC892/layout3.plist; sourceTree = "<group>"; };
 		ED6AA3461C17E58400143A36 /* ahhcd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ahhcd.plist; path = Resources_ALC892/ahhcd.plist; sourceTree = "<group>"; };
+		ED81B8581ECE303B00659D3D /* config_install.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config_install.plist; sourceTree = "<group>"; };
 		ED95D2AE1C443EC700F66D6C /* download.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = download.sh; sourceTree = "<group>"; };
 		ED95D2AF1C443EC700F66D6C /* install_downloads.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_downloads.sh; sourceTree = "<group>"; };
 		EDA850231CCC68A300E3BF50 /* install_tools.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_tools.sh; sourceTree = "<group>"; };
@@ -37,6 +38,7 @@
 				84777BD5170D46FD00FDFE92 /* README.md */,
 				84777BD4170D46FD00FDFE92 /* License.md */,
 				ED498D841BD3027200C7BB36 /* config.plist */,
+				ED81B8581ECE303B00659D3D /* config_install.plist */,
 				ED95D2AE1C443EC700F66D6C /* download.sh */,
 				EDA850231CCC68A300E3BF50 /* install_tools.sh */,
 				ED95D2AF1C443EC700F66D6C /* install_downloads.sh */,

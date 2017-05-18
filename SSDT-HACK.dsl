@@ -36,6 +36,14 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
         Return (Ones != Match(WVL, MEQ, Arg0, MTR, 0, 0))
     }
 
+//
+// Fake EC device for USB power properties on Sierra
+//
+    Device(_SB.EC)
+    {
+        Name(_HID, "EC000000")
+    }
+
     Scope(_SB.PCI0)
     {
         // IOKS does things with a non-existant PS2 port that causes issues with sleep.
