@@ -37,8 +37,8 @@
 			children = (
 				84777BD5170D46FD00FDFE92 /* README.md */,
 				84777BD4170D46FD00FDFE92 /* License.md */,
-				ED498D841BD3027200C7BB36 /* config.plist */,
 				ED81B8581ECE303B00659D3D /* config_install.plist */,
+				ED498D841BD3027200C7BB36 /* config.plist */,
 				ED95D2AE1C443EC700F66D6C /* download.sh */,
 				EDA850231CCC68A300E3BF50 /* install_tools.sh */,
 				ED95D2AF1C443EC700F66D6C /* install_downloads.sh */,

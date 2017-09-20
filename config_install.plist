@@ -100,8 +100,6 @@
 		</array>
 		<key>SSDT</key>
 		<dict>
-			<key>DropOem</key>
-			<false/>
 			<key>Generate</key>
 			<false/>
 		</dict>
@@ -117,7 +115,7 @@
 		<key>Timeout</key>
 		<integer>5</integer>
 		<key>XMPDetection</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>Devices</key>
 	<dict>
@@ -284,68 +282,7 @@
 		<key>AsusAICPUPM</key>
 		<true/>
 		<key>KextsToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>Disable Intel USB3 controller check</string>
-				<key>Find</key>
-				<data>9oDUAAAAgHU0</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>9oDUAAAAgOs0</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Disable XHCI 1.0 check</string>
-				<key>Find</key>
-				<data>QbzHAgDgPQABAAA=</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>QbzHAgDgPQAAAAA=</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Patch MSI or pin interrupts #1</string>
-				<key>Find</key>
-				<data>gUkIAABAAA==</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>gUkIAAAAAA==</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Patch MSI or pin interrupts #2</string>
-				<key>Find</key>
-				<data>QcdHCAAAQAA=</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>QcdHCAAAAAA=</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Enable PCI power management</string>
-				<key>Find</key>
-				<data>dU1Ii7voAQAA</data>
-				<key>Name</key>
-				<string>AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>601Ii7voAQAA</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Enable TRIM for SSD</string>
-				<key>Find</key>
-				<data>AEFQUExFIFNTRAA=</data>
-				<key>Name</key>
-				<string>IOAHCIBlockStorage</string>
-				<key>Replace</key>
-				<data>AAAAAAAAAAAAAAA=</data>
-			</dict>
-		</array>
+		<array/>
 	</dict>
 	<key>RtVariables</key>
 	<dict>
