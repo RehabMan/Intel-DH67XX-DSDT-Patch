@@ -42,12 +42,12 @@ clean:
 # Clover Install
 .PHONY: install
 install: $(BUILDDIR)/SSDT-HACK.aml
-	$(eval EFIDIR:=$(shell sudo ./mount_efi.sh /))
+	$(eval EFIDIR:=$(shell ./mount_efi.sh))
 	cp $(BUILDDIR)/SSDT-HACK.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched
 
 .PHONY: install_nvme
 install_nvme: $(BUILDDIR)/SSDT-HACK.aml
-	$(eval EFIDIR:=$(shell sudo ./mount_efi.sh /))
+	$(eval EFIDIR:=$(shell ./mount_efi.sh))
 	cp $(BUILDDIR)/SSDT-HACK.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched
 	cp $(BUILDDIR)/SSDT-NVMe.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched
 
