@@ -110,8 +110,6 @@
 		<false/>
 		<key>Timeout</key>
 		<integer>5</integer>
-		<key>XMPDetection</key>
-		<true/>
 	</dict>
 	<key>Devices</key>
 	<dict>
