@@ -279,7 +279,7 @@
 	<dict>
 		<key>AppleRTC</key>
 		<false/>
-		<key>AsusAICPUPM</key>
+		<key>AppleIntelCPUPM</key>
 		<true/>
 		<key>KextsToPatch</key>
 		<array/>
