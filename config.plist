@@ -8,25 +8,23 @@
 		<dict>
 			<key>Fixes</key>
 			<dict>
-				<key>NewWay_80000000</key>
+				<key>AddDTGP</key>
 				<true/>
-				<key>AddDTGP_0001</key>
+				<key>AddMCHC</key>
 				<true/>
-				<key>AddMCHC_0008</key>
+				<key>AddIMEI</key>
 				<true/>
-				<key>AddIMEI_80000</key>
+				<key>FixSBUS</key>
 				<true/>
-				<key>FixSBUS_0080</key>
+				<key>FixTMR</key>
 				<true/>
-				<key>FIX_TMR_40000</key>
+				<key>FixRTC</key>
 				<true/>
-				<key>FIX_RTC_20000</key>
+				<key>FixIPIC</key>
 				<true/>
-				<key>FixIPIC_0040</key>
+				<key>FixHPET</key>
 				<true/>
-				<key>FixHPET_0010</key>
-				<true/>
-				<key>FIX_WAK_200000</key>
+				<key>FixWAK</key>
 				<true/>
 			</dict>
 			<key>Patches</key>
