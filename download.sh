@@ -1,56 +1,39 @@
+#!/bin/bash
 #set -x
-curl_options="--retry 5 --location --progress-bar"
-curl_options_silent="--retry 5 --location --silent"
 
-# download typical release from RehabMan bitbucket downloads
-function download()
-# $1 is subdir on rehabman bitbucket
-# $2 is prefix of zip file name
-{
-    echo "downloading $2:"
-    curl $curl_options_silent --output /tmp/org.rehabman.download.txt https://bitbucket.org/RehabMan/$1/downloads/
-    local scrape=`grep -o -m 1 "/RehabMan/$1/downloads/$2.*\.zip" /tmp/org.rehabman.download.txt|perl -ne 'print $1 if /(.*)\"/'`
-    local url=https://bitbucket.org$scrape
-    echo $url
-    if [ "$3" == "" ]; then
-        curl $curl_options --remote-name "$url"
-    else
-        curl $curl_options --output "$3" "$url"
-    fi
-    echo
-}
+# get copy of tools if not present
+if [[ ! -d ./tools ]]; then
+    git clone https://github.com/RehabMan/hack-tools.git tools
+fi
+# update tools to latest
+if [[ -e ./tools/.git ]]; then
+    cd ./tools && git pull
+    cd ..
+fi
 
-# download latest release from github (perhaps others)
-function download_latest_notbitbucket()
-# $1 is main URL
-# $2 is URL of release page
-# $3 is partial file name to look for
-# $4 is file name to rename to
-{
-    echo "downloading latest $4 from $2:"
-    curl $curl_options_silent --output /tmp/org.rehabman.download.txt "$2"
-    local scrape=`grep -o -m 1 "/.*$3.*\.zip" /tmp/org.rehabman.download.txt`
-    local url=$1$scrape
-    echo $url
-    curl $curl_options --output "$4" "$url"
-    echo
-}
+# include subroutines
+DIR=$(dirname ${BASH_SOURCE[0]})
+source "$DIR/tools/_download_subs.sh"
 
-if [ ! -d ./downloads ]; then mkdir ./downloads; fi && rm -Rf downloads/* && cd ./downloads
+# remove deprecated downloads directory to avoid confusion
+if [[ -e ./downloads ]]; then rm -Rf ./downloads; fi
+
+# create _downloads directory and clean
+if [[ ! -d ./_downloads ]]; then mkdir ./_downloads; fi && rm -Rf ./_downloads/* && cd ./_downloads
 
 # download kexts
 mkdir ./kexts && cd ./kexts
-download os-x-fakesmc-kozlek RehabMan-FakeSMC
-download os-x-intel-network RehabMan-IntelMausiEthernet
-download os-x-eapd-codec-commander RehabMan-CodecCommander
-#download os-x-usb-inject-all RehabMan-USBInjectAll
-#download os-x-generic-usb3 RehabMan-Generic-USB3
+download_rehabman os-x-fakesmc-kozlek RehabMan-FakeSMC
+download_rehabman os-x-intel-network RehabMan-IntelMausiEthernet
+download_rehabman os-x-eapd-codec-commander RehabMan-CodecCommander
+#download_rehabman os-x-usb-inject-all RehabMan-USBInjectAll
+#download_rehabman os-x-generic-usb3 RehabMan-Generic-USB3
 cd ..
 
 # download tools
 mkdir ./tools && cd ./tools
-download os-x-maciasl-patchmatic RehabMan-patchmatic
-download os-x-maciasl-patchmatic RehabMan-MaciASL
-download acpica iasl iasl.zip
+download_rehabman os-x-maciasl-patchmatic RehabMan-patchmatic
+download_rehabman os-x-maciasl-patchmatic RehabMan-MaciASL
+download_rehabman acpica iasl iasl.zip
 cd ..
 
