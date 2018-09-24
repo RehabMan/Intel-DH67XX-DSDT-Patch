@@ -14,9 +14,11 @@ warn_about_superuser
 # install tools
 install_tools
 
+# remove old kexts
+remove_deprecated_kexts
+
 # install required kexts
 install_download_kexts
-remove_deprecated_kexts
 
 # create/install patched AppleHDA files
 install_hda
