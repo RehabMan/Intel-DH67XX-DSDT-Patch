@@ -7,21 +7,12 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		84777BD1170D46FD00FDFE92 /* dh67gd_igpu.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = dh67gd_igpu.txt; path = patches/dh67gd_igpu.txt; sourceTree = "<group>"; };
-		84777BD2170D46FD00FDFE92 /* dh67gd_lion_hdef.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = dh67gd_lion_hdef.txt; path = patches/dh67gd_lion_hdef.txt; sourceTree = "<group>"; };
-		84777BD3170D46FD00FDFE92 /* dh67gd.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = dh67gd.txt; path = patches/dh67gd.txt; sourceTree = "<group>"; };
 		84777BD4170D46FD00FDFE92 /* License.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = License.md; sourceTree = "<group>"; };
 		84777BD5170D46FD00FDFE92 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		84777BD6170D4B8500FDFE92 /* .maciasl */ = {isa = PBXFileReference; lastKnownFileType = text; path = .maciasl; sourceTree = "<group>"; };
 		ED1A372F1D282677008DCEF1 /* SSDT-NVMe.dsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SSDT-NVMe.dsl"; sourceTree = "<group>"; };
 		ED498D831BD3027200C7BB36 /* SSDT-HACK.dsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SSDT-HACK.dsl"; sourceTree = "<group>"; };
 		ED498D841BD3027200C7BB36 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		ED6AA33D1C17E4E300143A36 /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; usesTabs = 1; };
-		ED6AA3421C17E58400143A36 /* Platforms.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Platforms.plist; path = Resources_ALC892/Platforms.plist; sourceTree = "<group>"; };
-		ED6AA3431C17E58400143A36 /* layout1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = layout1.plist; path = Resources_ALC892/layout1.plist; sourceTree = "<group>"; };
-		ED6AA3441C17E58400143A36 /* layout2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = layout2.plist; path = Resources_ALC892/layout2.plist; sourceTree = "<group>"; };
-		ED6AA3451C17E58400143A36 /* layout3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = layout3.plist; path = Resources_ALC892/layout3.plist; sourceTree = "<group>"; };
-		ED6AA3461C17E58400143A36 /* ahhcd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ahhcd.plist; path = Resources_ALC892/ahhcd.plist; sourceTree = "<group>"; };
 		ED81B8581ECE303B00659D3D /* config_install.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config_install.plist; sourceTree = "<group>"; };
 		ED95D2AE1C443EC700F66D6C /* download.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = download.sh; sourceTree = "<group>"; };
 		ED95D2AF1C443EC700F66D6C /* install_downloads.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install_downloads.sh; sourceTree = "<group>"; };
@@ -40,32 +31,7 @@
 				ED6AA33D1C17E4E300143A36 /* makefile */,
 				ED498D831BD3027200C7BB36 /* SSDT-HACK.dsl */,
 				ED1A372F1D282677008DCEF1 /* SSDT-NVMe.dsl */,
-				ED6AA3471C17E58B00143A36 /* audio */,
-				ED6AA3401C17E53200143A36 /* static patches */,
 			);
-			sourceTree = "<group>";
-		};
-		ED6AA3401C17E53200143A36 /* static patches */ = {
-			isa = PBXGroup;
-			children = (
-				84777BD6170D4B8500FDFE92 /* .maciasl */,
-				84777BD3170D46FD00FDFE92 /* dh67gd.txt */,
-				84777BD1170D46FD00FDFE92 /* dh67gd_igpu.txt */,
-				84777BD2170D46FD00FDFE92 /* dh67gd_lion_hdef.txt */,
-			);
-			name = "static patches";
-			sourceTree = "<group>";
-		};
-		ED6AA3471C17E58B00143A36 /* audio */ = {
-			isa = PBXGroup;
-			children = (
-				ED6AA3461C17E58400143A36 /* ahhcd.plist */,
-				ED6AA3421C17E58400143A36 /* Platforms.plist */,
-				ED6AA3431C17E58400143A36 /* layout1.plist */,
-				ED6AA3441C17E58400143A36 /* layout2.plist */,
-				ED6AA3451C17E58400143A36 /* layout3.plist */,
-			);
-			name = audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

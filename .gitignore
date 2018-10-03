@@ -2,14 +2,9 @@
 DerivedData/
 _downloads/
 _tools/
-_hdainject_marker.txt
-_hdazml_marker.txt
 Patches.xcodeproj/project.xcworkspace/xcuserdata/
 Patches.xcodeproj/xcuserdata/
 Patches.xcodeproj/project.xcworkspace/xcshareddata/Patches.xccheckout
 Patches.xcodeproj/project.xcworkspace/xcshareddata/
 build/*
 !build/readme.txt
-AppleHDA_ALC892.kext
-AppleHDAHCD_ALC892.kext
-AppleHDA_ALC892_Resources

@@ -17,9 +17,12 @@ if [[ ! -d ./_downloads ]]; then mkdir ./_downloads; fi && rm -Rf ./_downloads/*
 mkdir ./kexts && cd ./kexts
 download_rehabman os-x-fakesmc-kozlek RehabMan-FakeSMC
 download_rehabman os-x-intel-network RehabMan-IntelMausiEthernet
-download_rehabman os-x-eapd-codec-commander RehabMan-CodecCommander
-#download_rehabman os-x-usb-inject-all RehabMan-USBInjectAll
-#download_rehabman os-x-generic-usb3 RehabMan-Generic-USB3
+download_rehabman os-x-brcmpatchram RehabMan-BrcmPatchRAM
+download_acidanthera Lilu acidanthera-Lilu
+download_acidanthera WhateverGreen acidanthera-WhateverGreen
+download_acidanthera AirportBrcmFixup acidanthera-AirportBrcmFixup
+download_acidanthera BT4LEContiunityFixup acidanthera-BT4LEContiunityFixup
+download_acidanthera AppleALC acidanthera-AppleALC
 cd ..
 
 # download tools
