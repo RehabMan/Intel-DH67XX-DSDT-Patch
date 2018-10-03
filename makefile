@@ -21,7 +21,7 @@ PRODUCTS=$(AML_PRODUCTS) $(HDA_PRODUCTS)
 
 LE=/Library/Extensions
 SLE=/System/Library/Extensions
-VERSION_ERA=$(shell ./tools/print_version.sh)
+VERSION_ERA=$(shell ./_tools/print_version.sh)
 ifeq "$(VERSION_ERA)" "10.10-"
 	INSTDIR=$SLE
 else
@@ -56,12 +56,12 @@ install_nvme: $(BUILDDIR)/SSDT-HACK.aml
 	cp $(BUILDDIR)/SSDT-HACK.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched
 	cp $(BUILDDIR)/SSDT-NVMe.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched
 
-$(HDAZML_MARK): $(RESOURCES)/*.plist tools/patch_hdazml.sh tools/_hda_subs.sh
-	./tools/patch_hdazml.sh $(HDA)
+$(HDAZML_MARK): $(RESOURCES)/*.plist _tools/patch_hdazml.sh _tools/_hda_subs.sh
+	./_tools/patch_hdazml.sh $(HDA)
 	touch $(HDAZML_MARK)
 
-$(HDAINJECT_MARK): $(RESOURCES)/*.plist tools/patch_hdazml.sh tools/_hda_subs.sh
-	./tools/patch_hdainject.sh $(HDA)
+$(HDAINJECT_MARK): $(RESOURCES)/*.plist _tools/patch_hdazml.sh _tools/_hda_subs.sh
+	./_tools/patch_hdainject.sh $(HDA)
 	touch $(HDAINJECT_MARK)
 
 .PHONY: clean_hda
