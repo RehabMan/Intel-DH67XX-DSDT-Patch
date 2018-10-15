@@ -105,7 +105,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>kext-dev-mode=1</string>
+		<string>kext-dev-mode=1 -igfxnohdmi</string>
 		<key>NeverHibernate</key>
 		<true/>
 		<key>Secure</key>
@@ -134,8 +134,6 @@
 				<data>EAADAA==</data>
 				<key>AAPL00,DualLink</key>
 				<data>AQAAAA==</data>
-				<key>framebuffer-patch-enable</key>
-				<integer>1</integer>
 			</dict>
 			<key>PciRoot(0)/Pci(0x1b,0)</key>
 			<dict>
